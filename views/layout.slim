@@ -1,35 +1,31 @@
 doctype html
 html
   head
-    title Slim Examples
-    meta name="keywords" content="template language"
-    meta name="author" content=author
-    
+    title DevRankAPP
+    / Bootstrap CSS and theme (United Theme)
     link{
-      href="" ref="stylesheet" crossorigin="anonymous"
-    }
+      href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"
+      rel="stylesheet" integrity="sha384-gv0oNvwnqzF6ULI9TVsSmnULNb3zasNysvWwfT/s4l8k5I+g6oFz9dye0wg3rQ2Q"
+      crossorigin="anonymous" }
+      / Custom CSS
+      link rel='stylesheet' href='/style.css'
+    body
+      / JQuery and Bootstrap JS
+      script{
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"
+        integrity=""
+        crossorigin="anonymous"
+      }
+      script{
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"
+      }
 
-    link ref='stylesheet' href='/style.css'
+      .container id='html_body'
+        h1 Groupster
+        p Monitor your public FaceBook Group
 
-  body
-    h1 Markup examples
-
-    #content
-      p This example shows you what a basic Slim file looks like.
-
-      == yield
-
-      - unless items.empty?
-        table
-          - items.each do |item|
-            tr
-              td.name = item.name
-              td.price = item.price
-      - else
-        p
-         | No items found.  Please add some inventory.
-           Thank you!
-
-    div id="footer"
-      = render 'footer'
-      | Copyright © #{year} #{author}
+      section
+        include :flash_bar
+        == yield
