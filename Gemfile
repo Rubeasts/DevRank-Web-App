@@ -20,7 +20,6 @@ gem 'rack-flash3'
 
 group :development do
   gem 'rerun'
-
   gem 'flog'
   gem 'flay'
 end
