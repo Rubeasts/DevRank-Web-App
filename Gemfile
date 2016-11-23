@@ -9,18 +9,14 @@ gem 'json'
 gem 'econfig'
 gem 'rake'
 
-gem 'gitget'
-gem 'sequel'
-
 gem 'roar'
 gem 'multi_json'
 gem 'dry-monads'
 gem 'dry-container'
 gem 'dry-transaction'
 
-group :development, :test do
-  gem 'sqlite3'
-end
+gem 'slim'
+gem 'rack-flash3'
 
 group :development do
   gem 'rerun'
@@ -37,13 +33,4 @@ group :test do
 
   gem 'vcr'
   gem 'webmock'
-end
-
-group :development, :production do
-  gem 'tux'
-  gem 'hirb'
-end
-
-group :production do
-  gem 'pg'
 end
