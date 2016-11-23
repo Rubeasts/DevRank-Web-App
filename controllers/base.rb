@@ -6,6 +6,10 @@ class DevRankAPP < Sinatra::Base
     Econfig.root = File.expand_path('..', settings.root)
   end
 
+  get '/?' do
+    "Hello World"
+  end
+
   set :views, File.expand_path('../../views', __FILE__)
   set :public_dir, File.expand_path('../../public', __FILE__)
 
