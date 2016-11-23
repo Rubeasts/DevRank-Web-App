@@ -6,8 +6,8 @@ class DevRankAPP < Sinatra::Base
     Econfig.root = File.expand_path('..', settings.root)
   end
 
-  get '/?' do
-    "Hello World"
+  get '/' do
+    slim :index
   end
 
   set :views, File.expand_path('../../views', __FILE__)
