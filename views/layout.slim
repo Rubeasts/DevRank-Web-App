@@ -1,31 +1,68 @@
 doctype html
-html
+html[lang="en"]
   head
-    title DevRankAPP
-    / Bootstrap CSS and theme (United Theme)
-    link{
-      href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"
-      rel="stylesheet" integrity="sha384-gv0oNvwnqzF6ULI9TVsSmnULNb3zasNysvWwfT/s4l8k5I+g6oFz9dye0wg3rQ2Q"
-      crossorigin="anonymous" }
-      / Custom CSS
-      link rel='stylesheet' href='/style.css'
-    body
-      / JQuery and Bootstrap JS
-      script{
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"
-        integrity=""
-        crossorigin="anonymous"
-      }
-      script{
-        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"
-      }
+    meta[charset="utf-8"]
+    meta[http-equiv="X-UA-Compatible" content="IE=edge"]
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
+    meta[name="description" content=""]
+    meta[name="author" content=""]
+    title
+      | DevRank - Your Github's score
+    link[href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"]
+    link[href="css/landing-page.css" rel="stylesheet"]
+    link[href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"]
+    link[href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"]
+  body
+    nav.navbar.navbar-default.navbar-fixed-top.topnav[role="navigation"]
+      .container.topnav
+        .navbar-header
+          button.navbar-toggle[type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"]
+            span.sr-only
+              | Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.topnav[href="#"]
+            | DevRank
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a[href="#about"]
+                | How it Works
+            li
+              a[href="#services"]
+                | Services
+            li
+              a[href="#contact"]
+                | Contact
+    a[name="about"]
 
-      .container id='html_body'
-        h1 Groupster
-        p Monitor your public FaceBook Group
+    == yield
 
-      section
-        include :flash_bar
-        == yield
+    footer
+      .container
+        .row
+          .col-lg-12
+            ul.list-inline
+              li
+                a[href="#"]
+                  | Home
+              li.footer-menu-divider
+                | ⋅
+              li
+                a[href="#about"]
+                  | About
+              li.footer-menu-divider
+                | ⋅
+              li
+                a[href="#services"]
+                  | Services
+              li.footer-menu-divider
+                | ⋅
+              li
+                a[href="#contact"]
+                  | Contact
+            p.copyright.text-muted.small
+              | Copyright © Your Company 2016. All Rights Reserved
+    script[src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"]
+    script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
