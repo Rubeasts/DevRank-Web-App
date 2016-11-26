@@ -28,13 +28,16 @@ html[lang="en"]
           ul.nav.navbar-nav.navbar-right
             li
               a[href="#about"]
-                | How it Works
-            li
-              a[href="#services"]
-                | Services
+                | About
             li
               a[href="#contact"]
                 | Contact
+            li
+              a[href="/username"]
+                i.fa.fa-user.fa-fw
+            li
+              a[href="/repository"]
+                i.fa.fa-inbox.fa-fw
     a[name="about"]
 
     == yield
@@ -55,14 +58,9 @@ html[lang="en"]
               li.footer-menu-divider
                 | ⋅
               li
-                a[href="#services"]
-                  | Services
-              li.footer-menu-divider
-                | ⋅
-              li
                 a[href="#contact"]
                   | Contact
             p.copyright.text-muted.small
-              | Copyright © Your Company 2016. All Rights Reserved
+              | Copyright © Rubeasts 2016. All Rights Reserved
     script[src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"]
     script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
