@@ -6,12 +6,15 @@ class DevRankAPP < Sinatra::Base
     Econfig.root = File.expand_path('..', settings.root)
   end
 
-  get '/?' do
-    "Hello World"
+  get '/' do
+    slim :index
   end
 
   set :views, File.expand_path('../../views', __FILE__)
   set :public_dir, File.expand_path('../../public', __FILE__)
+ 
+  use Rack::Session::Cookie, secret: DevRankAPP.config.SECRET
+  use Rack::Flash
 
   after do
     content_type 'text/html'

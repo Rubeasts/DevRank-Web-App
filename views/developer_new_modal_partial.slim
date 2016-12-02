@@ -1,0 +1,22 @@
+div id="newDeveloperModal" class="modal fade" role="dialog"
+  div class="modal-dialog"
+    div class="modal-content"
+      div class="modal-header"
+        h4 New Developer
+      div class="modal-body"
+        form role="form" action="/developers" method='post' id='new-developer-form'
+          div class="form-developer"
+            label for='fb_developer_url_input' Developer URL:
+            input{ 
+              type='text' name='developer_url'
+              id='fb_developer_url_input' class="form-control"
+              placeholder="e.g.: https://www.facebook.com/developers/ISS.SOAD"
+            }
+          button{ 
+            type='submit' id='developer-form-submit' class='submit' 
+            value='submit' class="btn btn-success" 
+          } Create          
+
+          button{ 
+            type="button" class="btn btn-default" data-dismiss="modal" 
+          } Cancel

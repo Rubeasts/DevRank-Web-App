@@ -1,0 +1,12 @@
+---
+development:
+  DEVRANK_API: 'http://localhost:9292/api/v0.1'
+  SECRET: 'dontyoulovelazyteammates'
+
+test:
+  DEVRANK_API: 'http://localhost:9292/api/v0.1'
+  SECRET: 'dontyoulovelazyteammates'
+
+production:
+  DEVRANK_API: 'https://my-server.com/api/v0.1'
+  SECRET: 'dontyoulovelazyteammates'
