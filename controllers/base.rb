@@ -10,16 +10,11 @@ class DevRankAPP < Sinatra::Base
     slim :index
   end
 
-  get '/username' do
-    slim :username
-  end
-
-  get '/repository' do
-    slim :repository
-  end
-
   set :views, File.expand_path('../../views', __FILE__)
   set :public_dir, File.expand_path('../../public', __FILE__)
+ 
+  use Rack::Session::Cookie, secret: DevRankAPP.config.SECRET
+  use Rack::Flash
 
   after do
     content_type 'text/html'

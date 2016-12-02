@@ -1,3 +1,5 @@
+
+div id="newDeveloperModal" class="modal fade" role="dialog"
 .intro-header
   .container
     .row
@@ -21,43 +23,7 @@
                 span.network-name
                   | Repository
                   
-a[name="services"]
-.content-section-a
-  .container
-    .row
-      .col-lg-5.col-sm-6
-        hr.section-heading-spacer
-        .clearfix
-        h2.section-heading
-          | Title One
-        p.lead
-          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut massa facilisis, rutrum leo nec, condimentum lectus.
-      .col-lg-5.col-lg-offset-2.col-sm-6
-        img.img-responsive[src="img/score.png" alt="Score"]
-.content-section-b
-  .container
-    .row
-      .col-lg-5.col-lg-offset-1.col-sm-push-6.col-sm-6
-        hr.section-heading-spacer
-        .clearfix
-        h2.section-heading
-          | Title Two
-        p.lead
-          | Aenean erat purus, congue id arcu in, sollicitudin venenatis justo. Sed nec congue nisl. Duis luctus ullamcorper tellus, nec aliquam quam scelerisque convallis.
-      .col-lg-5.col-sm-pull-6.col-sm-6
-        img.img-responsive[src="img/skills.png" alt="Skills"]
-.content-section-a
-  .container
-    .row
-      .col-lg-5.col-sm-6
-        hr.section-heading-spacer
-        .clearfix
-        h2.section-heading
-          | Title Three
-        p.lead
-          | Fusce congue lacinia eros nec rutrum. Maecenas sit amet mauris eu sapien tincidunt scelerisque. 
-      .col-lg-5.col-lg-offset-2.col-sm-6
-        img.img-responsive[src="img/code.png" alt="Code"]
+
 a[name="contact"]
 .banner
   .container
@@ -78,22 +44,28 @@ a[name="contact"]
               span.network-name
                 | Facebook
 
-#username.modal.fade
-  .modal-dialog.modal-sm
-    .modal-content
-      .modal-header
-        button.close[type="button" data-dismiss="modal" aria-hidden="true"]
-          | ×
-        h4.modal-title
-          | Username
-      .modal-body
-        .form-group
-          input#recipient-name.form-control[placeholder="Username"]
-      .modal-footer
-        button.btn.btn-default[type="button" data-dismiss="modal"]
-          | Cancel
-        button.btn.btn-primary[type="button"]
-          | Confirm
+div id="username" class="modal fade" role="dialog"
+  div class="modal-dialog"
+    div class="modal-content"
+      div class="modal-header"
+        h4 Find User
+      div class="modal-body"
+        form role="form" action="/username" method='get' id='new-developer-form'
+          div class="form-developer"
+            label for='developer_username' GitHub Username:
+            input{ 
+              type='text' name='developer_username'
+              id='developer_username' class="form-control"
+              placeholder="e.g.: NicholasDanks"
+            }
+          button{ 
+            type='submit' id='username-form-submit' class='submit' 
+            value='submit' class="btn btn-success" 
+          } Find          
+
+          button{ 
+            type="button" class="btn btn-default" data-dismiss="modal" 
+          } Cancel
 
 #repository.modal.fade
   .modal-dialog.modal-sm

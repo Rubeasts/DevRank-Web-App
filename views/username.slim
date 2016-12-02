@@ -1,16 +1,12 @@
 .content
-  .container
+  .container 
     .row
       .col-md-3
         h1
           img.img-responsive.img-rounded[src="http://theineptowl.com/wp-content/uploads/2016/01/donald-trump-profile.jpg" alt="Profile Picture"]
-          h4
-            | Bhaumik Patel
+          h4 #{@data&["username"]}
+            
           small
-            cite[title="San Francisco, USA"]
-              | San Francisco, USA 
-              i.glyphicon.glyphicon-map-marker
-          p
             i.glyphicon.glyphicon-envelope
             | email@example.com 
             br
