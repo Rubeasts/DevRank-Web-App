@@ -17,11 +17,11 @@ class DevRankAPP < Sinatra::Base
   	result = CreateNewGroup.call(url_request)
 
   	if result.success?
-  	  flash[:notice] = 'User successfully added'
+  	  flash[:notice] = 'Group successfully added'
   	else
   	  flash[:error] = result.value.message
   	end
 
-  	redirect '/dev/#{result.name}'
+  	redirect '/username/#{result.name}'
   end
 end

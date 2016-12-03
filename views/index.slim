@@ -67,30 +67,21 @@ div id="username" class="modal fade" role="dialog"
             type="button" class="btn btn-default" data-dismiss="modal" 
           } Cancel
 
-div id="repository" class="modal fade" role="dialog"
-  div class="modal-dialog"
-    div class="modal-content"
-      div class="modal-header"
-        h4 Find User
-      div class="modal-body"
-        form role="form" action="/repository" method='get' id='new-repository-form'
-          div class="form-developer"
-            label for='repository_username' GitHub Username:
-            input{ 
-              type='text' name='repository_username'
-              id='repository_username' class="form-control"
-              placeholder="e.g.: NicholasDanks"
-            }
-            input{ 
-              type='text' name='repository_name'
-              id='repository_name' class="form-control"
-              placeholder="e.g.: facegroup"
-            }
-          button{ 
-            type='submit' id='repository-form-submit' class='submit' 
-            value='submit' class="btn btn-success" 
-          } Find          
-
-          button{ 
-            type="button" class="btn btn-default" data-dismiss="modal" 
-          } Cancel
+#repository.modal.fade
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+          | ×
+        h4.modal-title
+          | Repository
+      .modal-body
+        .form-group
+          input#recipient-name.form-control[placeholder="Username"]
+        .form-group
+          input#recipient-name.form-control[placeholder="Repository"]
+      .modal-footer
+        button.btn.btn-default[type="button" data-dismiss="modal"]
+          | Cancel
+        button.btn.btn-primary[type="button"]
+          | Confirm
