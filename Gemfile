@@ -30,8 +30,11 @@ group :test do
   gem 'minitest'
   gem 'minitest-rg'
 
-  gem 'rack-test'
+  gem 'watir-webdriver'
+  gem 'headless'
+  gem 'page-object'
+end
 
-  gem 'vcr'
-  gem 'webmock'
+group :development, :production do
+  gem 'tux'
 end
