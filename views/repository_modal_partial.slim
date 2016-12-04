@@ -1,0 +1,18 @@
+div id="RepositoryModal" class="modal fade" role="dialog"
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+          | ×
+        h4.modal-title
+          | Repository
+      .modal-body
+        .form-group
+          input#recipient-name.form-control[placeholder="Username"]
+        .form-group
+          input#recipient-name.form-control[placeholder="Repository"]
+      .modal-footer
+        button.btn.btn-default[type="button" data-dismiss="modal"]
+          | Cancel
+        button.btn.btn-primary[type="button"]
+          | Confirm

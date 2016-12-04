@@ -10,19 +10,19 @@ div id="newDeveloperModal" class="modal fade" role="dialog"
           h3
             | Get your Github's Score
           hr.intro-divider
-                
+
           ul.list-inline.intro-social-buttons
             li
-              a.btn.btn-default.btn-lg[href="#username" role="button" data-toggle="modal"]
+              a.btn.btn-default.btn-lg[href="#DeveloperModal" role="button" data-toggle="modal"]
                 i.fa.fa-user.fa-fw
                 span.network-name
                   | Username
             li
-              a.btn.btn-default.btn-lg[href="#repository" role="button" data-toggle="modal"]
+              a.btn.btn-default.btn-lg[href="#RepositoryModal" role="button" data-toggle="modal"]
                 i.fa.fa-inbox.fa-fw
                 span.network-name
                   | Repository
-                  
+
 
 a[name="contact"]
 .banner
@@ -43,45 +43,3 @@ a[name="contact"]
               i.fa.fa-facebook.fa-fw
               span.network-name
                 | Facebook
-
-div id="username" class="modal fade" role="dialog"
-  div class="modal-dialog"
-    div class="modal-content"
-      div class="modal-header"
-        h4 Find User
-      div class="modal-body"
-        form role="form" action="/username" method='get' id='new-developer-form'
-          div class="form-developer"
-            label for='developer_username' GitHub Username:
-            input{ 
-              type='text' name='developer_username'
-              id='developer_username' class="form-control"
-              placeholder="e.g.: NicholasDanks"
-            }
-          button{ 
-            type='submit' id='username-form-submit' class='submit' 
-            value='submit' class="btn btn-success" 
-          } Find          
-
-          button{ 
-            type="button" class="btn btn-default" data-dismiss="modal" 
-          } Cancel
-
-#repository.modal.fade
-  .modal-dialog.modal-sm
-    .modal-content
-      .modal-header
-        button.close[type="button" data-dismiss="modal" aria-hidden="true"]
-          | ×
-        h4.modal-title
-          | Repository
-      .modal-body
-        .form-group
-          input#recipient-name.form-control[placeholder="Username"]
-        .form-group
-          input#recipient-name.form-control[placeholder="Repository"]
-      .modal-footer
-        button.btn.btn-default[type="button" data-dismiss="modal"]
-          | Cancel
-        button.btn.btn-primary[type="button"]
-          | Confirm

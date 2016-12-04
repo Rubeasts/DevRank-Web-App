@@ -9,11 +9,11 @@ html[lang="en"]
     title
       | DevRank - Your Github's score
     link[href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"]
-    link[href="css/landing-page.css" rel="stylesheet"]
+    link[href="/css/landing-page.css" rel="stylesheet"]
     link[href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"]
     link[href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"]
   body
-  
+
     nav.navbar.navbar-default.navbar-fixed-top.topnav[role="navigation"]
       .container.topnav
         .navbar-header
@@ -23,25 +23,24 @@ html[lang="en"]
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand.topnav[href="#"]
+          a.navbar-brand.topnav[href="/"]
             | DevRank
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-left
+            li
+              include :flash_bar
           ul.nav.navbar-nav.navbar-right
             li
-              a[href="#about"]
-                | About
+              a[href="#DeveloperModal" role="button" data-toggle="modal"]
+                i.fa.fa-user.fa-fw
+                span.network-name
             li
-              a[href="#contact"]
-                | Contact
-            li
-              a[href="/username"]
-                i.fa.fa-user.fa-lg
-            li
-              a[href="/repository"]
-                i.fa.fa-inbox.fa-lg
-               
+              a[href="#RepositoryModal" role="button" data-toggle="modal"]
+                i.fa.fa-inbox.fa-fw
+                span.network-name
+
     == yield
-          
+
     footer
       .container
         .row
@@ -64,3 +63,6 @@ html[lang="en"]
               | Copyright © Rubeasts 2016. All Rights Reserved
     script[src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"]
     script[src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"]
+
+include :developer_modal_partial
+include :repository_modal_partial
