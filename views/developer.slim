@@ -1,0 +1,31 @@
+.content
+  .container
+    .row
+      .col-md-3
+        h1
+          img.img-responsive.img-rounded[src="#{@data['avatar_url']}" alt="Profile Picture"]
+          h4 #{@data&.name}
+          small
+            cite
+              | #{@data&.location}
+              i.glyphicon.glyphicon-map-marker
+          small
+            p Email: #{@data&.email}
+            p
+              | github:
+              a href="https://github.com/#{@data&.username}"
+                | www.github.com/#{@data&.username}
+            p Followers: #{@data&.followers}
+            p Following: #{@data&.following}
+            p Stars: #{@data&.stars}
+      .col-md-9
+        h1
+        .col-md-12
+          - @data&.repositories&.each do |repo|
+            .col-md-6
+              .panel.panel-default
+                .panel-heading
+                  h3.panel-title
+                    | #{repo.full_name}
+                .panel-body
+                  |  Panel content

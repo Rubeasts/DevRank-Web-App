@@ -1,0 +1,22 @@
+div id="DeveloperModal" class="modal fade" role="dialog"
+  div class="modal-dialog"
+    div class="modal-content"
+      div class="modal-header"
+        h4 Find User
+      div class="modal-body"
+        form role="form" action="/dev" method='get' id='new-developer-form'
+          div class="form-developer"
+            label for='developer_username' GitHub Username:
+            input{
+              type='text' name='developer_username'
+              id='developer_username' class="form-control"
+              placeholder="e.g.: NicholasDanks"
+            }
+          button{
+            type='submit' id='username-form-submit' class='submit'
+            value='submit' class="btn btn-success"
+          } Find
+
+          button{
+            type="button" class="btn btn-default" data-dismiss="modal"
+          } Cancel
