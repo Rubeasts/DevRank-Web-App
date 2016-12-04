@@ -3,19 +3,20 @@
     .row
       .col-md-3
         h1
-          img.img-responsive.img-rounded[src="http://theineptowl.com/wp-content/uploads/2016/01/donald-trump-profile.jpg" alt="Profile Picture"]
-          h4 #{@data&["username"]}
-            
+          img.img-responsive.img-rounded[src="#{@data['avatar_url']}" alt="Profile Picture"]
+          h4 #{@data['name']}
+          small
+            cite[title="San Francisco, USA"]
+              | #{@data['location']}
+              i.glyphicon.glyphicon-map-marker
+          p            
           small
             i.glyphicon.glyphicon-envelope
-            | email@example.com 
+            | #{@data['email']} 
             br
             i.glyphicon.glyphicon-globe
-            a[href="http://www.jquery2dotnet.com"]
-              | www.jquery2dotnet.com
-            br
-            i.glyphicon.glyphicon-gift
-            | June 02, 1988 
+            a[href="https://github.com/#{@data['username']}"]
+              | www.github.com/#{@data['username']}            
       .col-md-9
         h1
         .col-md-12
