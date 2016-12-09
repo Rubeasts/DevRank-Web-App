@@ -18,7 +18,8 @@ describe 'Developer Content' do
 
   it '(HAPPY) should see content' do
     # GIVEN
-    @browser.goto dev
+    @browser.goto dev(samilaaroussi)
+
     # THEN
 
     @browser.img(class: 'avatar').visible?.must_equal true
@@ -28,7 +29,7 @@ describe 'Developer Content' do
 
   it '(HAPPY) should be able open the new group modal' do
     # GIVEN: on the homepage
-    @browser.goto dev
+    @browser.goto dev(samilaaroussi)
 
     # WHEN: click on 'new group'
     @browser.a(name: 'dev').click
@@ -41,7 +42,7 @@ describe 'Developer Content' do
 
   it '(HAPPY) should be able open the new group modal repo' do
     # GIVEN: on the homepage
-    @browser.goto dev
+    @browser.goto dev(samilaaroussi)
 
     # WHEN: click on 'new group'
     @browser.a(name: 'repo').click

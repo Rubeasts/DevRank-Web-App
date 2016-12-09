@@ -20,6 +20,6 @@ def homepage
   HOST
 end
 
-def group_details_page(username)
+def dev_page(username)
   "#{HOST}/dev/#{username}"
 end
