@@ -18,7 +18,9 @@ describe 'Developer Content' do
 
   it '(HAPPY) should see content' do
     # GIVEN
-    @browser.goto dev(samilaaroussi)
+    @browser.goto homepage
+    @browser.text_field(:id, "developer_username").set("rjollet")
+    @browser.button(:id,"username-form-submit").click
 
     # THEN
 
@@ -29,7 +31,9 @@ describe 'Developer Content' do
 
   it '(HAPPY) should be able open the new group modal' do
     # GIVEN: on the homepage
-    @browser.goto dev(samilaaroussi)
+    @browser.goto homepage
+    @browser.text_field(:id, "developer_username").set("rjollet")
+    @browser.button(:id,"username-form-submit").click
 
     # WHEN: click on 'new group'
     @browser.a(name: 'dev').click
@@ -42,7 +46,9 @@ describe 'Developer Content' do
 
   it '(HAPPY) should be able open the new group modal repo' do
     # GIVEN: on the homepage
-    @browser.goto dev(samilaaroussi)
+    @browser.goto homepage
+    @browser.text_field(:id, "developer_username").set("rjollet")
+    @browser.button(:id,"username-form-submit").click
 
     # WHEN: click on 'new group'
     @browser.a(name: 'repo').click

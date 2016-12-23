@@ -7,3 +7,4 @@ class HomePage
   div(:flash_notice, class: 'alert')
   a(:new_developer, name: 'dev')
   a(:new_repository, name: 'repo')
+  div(:modal, class: 'modal-dialog')
