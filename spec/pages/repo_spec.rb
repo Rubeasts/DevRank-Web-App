@@ -11,3 +11,4 @@ class RepositoryPage
   div(:repository_block, class: 'col-md-6')
   input(:developer_username, id: 'developer_username')
   button(:developer_submit, id: 'username-form-submit')
+end
