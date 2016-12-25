@@ -34,7 +34,7 @@ describe 'Homepage' do
       @browser.a(name: 'dev').click
 
       # THEN: should see elements in modal window
-      Watir::Wait.until { @browser.div(class: 'modal-dialog').visible? }
+      Watir::Wait.until { @browser.div(id: 'DeveloperModal').visible? }
       @browser.input(id: 'developer_username').visible?.must_equal true
       @browser.button(id: 'username-form-submit').visible?.must_equal true
     end
@@ -47,8 +47,9 @@ describe 'Homepage' do
       @browser.a(name: 'repo').click
 
       # THEN: should see elements in modal window
-      Watir::Wait.until { @browser.div(class: 'modal-dialog').visible? }
-      @browser.input(id: 'repository_username').visible?.must_equal true
+      Watir::Wait.until { @browser.div(id: 'RepositoryModal').visible? }
+      @browser.input(id: 'repository_owner').visible?.must_equal true
+      @browser.input(id: 'repository_name').visible?.must_equal true
       @browser.button(id: 'repository-form-submit').visible?.must_equal true
     end
   end
