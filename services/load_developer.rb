@@ -29,7 +29,7 @@ class LoadDeveloper
       http_result = HTTP.get("#{DevRankAPP.config.DEVRANK_API}/dev/#{username}")
       Right(http_result)
     rescue
-      Left(Error.new('Our servers failed to get #{username} - we are investigating!'))
+      Left(Error.new("Our servers failed to get #{username} - we are investigating!"))
     end
   }
 
