@@ -19,7 +19,3 @@ HOST = 'http://localhost:9000/'
 def homepage
   HOST
 end
-
-def dev_page(username)
-  "#{HOST}/dev/#{username}"
-end

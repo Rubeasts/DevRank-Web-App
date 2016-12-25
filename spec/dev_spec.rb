@@ -19,6 +19,7 @@ describe 'Developer Content' do
   it '(HAPPY) should see content' do
     # GIVEN
     @browser.goto homepage
+    @browser.a(name: 'dev').click
     @browser.text_field(:id, "developer_username").set("rjollet")
     @browser.button(:id,"username-form-submit").click
 
@@ -32,11 +33,9 @@ describe 'Developer Content' do
   it '(HAPPY) should be able open the new group modal' do
     # GIVEN: on the homepage
     @browser.goto homepage
+    @browser.a(name: 'dev').click
     @browser.text_field(:id, "developer_username").set("rjollet")
     @browser.button(:id,"username-form-submit").click
-
-    # WHEN: click on 'new group'
-    @browser.a(name: 'dev').click
 
     # THEN: should see elements in modal window
     Watir::Wait.until { @browser.div(class: 'modal-dialog').visible? }
@@ -47,11 +46,9 @@ describe 'Developer Content' do
   it '(HAPPY) should be able open the new group modal repo' do
     # GIVEN: on the homepage
     @browser.goto homepage
+    @browser.a(name: 'repo').click
     @browser.text_field(:id, "developer_username").set("rjollet")
     @browser.button(:id,"username-form-submit").click
-
-    # WHEN: click on 'new group'
-    @browser.a(name: 'repo').click
 
     # THEN: should see elements in modal window
     Watir::Wait.until { @browser.div(class: 'modal-dialog').visible? }
