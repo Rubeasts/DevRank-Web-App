@@ -9,6 +9,7 @@ require 'headless'
 require 'page-object'
 
 require './init.rb'
+require_relative 'pages/init.rb'
 
 HAPPY_USERNAME = 'rjollet'
 SAD_USERNAME = '132452'
