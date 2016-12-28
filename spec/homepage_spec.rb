@@ -20,44 +20,44 @@ describe 'Homepage' do
     it '(HAPPY) should see website features' do
       visit HomePage do |page|
         # GIVEN
-        page.goto homepage
+        @browser.goto homepage
         page.title.must_include 'DevRank'
-        page.h1.text.must_include 'DevRank'
+        page.heading.must_include 'DevRank'
 
         # THEN
-        page.new_developer.visible?.must_equal true
-        page.new_repository.visible?.must_equal true
+        page.new_developer_element.visible?.must_equal true
+        page.new_repository_element.visible?.must_equal true
       end
     end
 
     it '(HAPPY) should be able open the new group modal' do
       visit HomePage do |page|
         # GIVEN: on the homepage
-        page.goto homepage
+        @browser.goto homepage
 
         # WHEN: click on 'new group'
-        page.new_developer.click
+        page.new_developer
 
         # THEN: should see elements in modal window
         Watir::Wait.until { @browser.div(id: 'DeveloperModal').visible? }
-        page.input_username.visible?.must_equal true
-        page.developer_submit.visible?.must_equal true
+        page.input_username_element.visible?.must_equal true
+        page.username_submit_element.visible?.must_equal true
       end
     end
 
     it '(HAPPY) should be able open the new group modal repo' do
       visit HomePage do |page|
         # GIVEN: on the homepage
-        page.goto homepage
+        @browser.goto homepage
 
         # WHEN: click on 'new group'
-        page.new_repository.click
+        page.new_repository
 
         # THEN: should see elements in modal window
         Watir::Wait.until { @browser.div(id: 'RepositoryModal').visible? }
-        page.input_owner.visible?.must_equal true
-        page.input_repository.visible?.must_equal true
-        page.username_submit.visible?.must_equal true
+        page.input_owner_element.visible?.must_equal true
+        page.input_repository_element.visible?.must_equal true
+        page.repository_submit_element.visible?.must_equal true
       end
     end
   end
