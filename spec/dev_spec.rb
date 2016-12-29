@@ -26,7 +26,7 @@ describe 'Developer Content' do
       page.username_submit
 
       # THEN
-
+      Watir::Wait.until { page.avatar_element.visible? }
       page.avatar_element.visible?.must_equal true
       # @browser.div(class: 'col-md-6').count.must_be :>=, 1
     end
