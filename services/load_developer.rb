@@ -13,7 +13,8 @@ class LoadDeveloper
     end.call(url_request)
   end
 
-  register :validate_username_request, lambda { |dev_username_request|
+  register :validate_username_request, lambda { |params|
+    dev_username_request = DevUsernameRequest.call(params)
     if dev_username_request.success?
       Right(dev_username_request[:developer_username])
     else

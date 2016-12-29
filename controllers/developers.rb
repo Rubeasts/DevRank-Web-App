@@ -3,9 +3,9 @@
 class DevRankAPP < Sinatra::Base
   extend Econfig::Shortcut
 
+  #dev modal forms handler
   get '/dev/?' do
     dev_username_request = DevUsernameRequest.call(params)
-    puts dev_username_request.inspect
     if dev_username_request.success?
       redirect "/dev/#{dev_username_request[:developer_username]}"
     else
@@ -17,9 +17,9 @@ class DevRankAPP < Sinatra::Base
     end
   end
 
+  #load developer url path
   get '/dev/:developer_username/?' do
-    dev_username_request = DevUsernameRequest.call(params)
-    result = LoadDeveloper.call(dev_username_request)
+    result = LoadDeveloper.call(params)
     if result.success?
       @data = result.value
       slim :developer
