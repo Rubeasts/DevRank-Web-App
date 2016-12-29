@@ -5,25 +5,4 @@
         h1
           | #{@data&.full_name}
           h4
-            | Privacy: #{@data&.name}
-          small
-            cite
-              | #{@data&.location}
-              i.glyphicon.glyphicon-map-marker
-          small
-            p
-              | Email: #{@data&.email}
-              i.glyphicon.glyphicon-map-marker
-            p
-              | Private: #{@data&.is_private}
-              i.glyphicon.glyphicon-map-marker
-            p
-              | Watchers: #{@data&.watchers_count}
-              i.glyphicon.glyphicon-eye-open
-            p
-              | Stars: #{@data&.stargazers_count}
-              i.glyphicon.glyphicon-star
-            p 
-              | Open Issues: #{@data&.stargazers_count}
-              i.glyphicon.glyphicon-bullhorn
-              
+            | Privacy: #{@data&.is_private}
