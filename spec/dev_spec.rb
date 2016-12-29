@@ -27,7 +27,7 @@ describe 'Developer Content' do
 
       # THEN
 
-      @browser.img(class: 'avatar').visible?.must_equal true
+      page.avatar_element.visible?.must_equal true
       # @browser.div(class: 'col-md-6').count.must_be :>=, 1
     end
   end
