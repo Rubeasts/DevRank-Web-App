@@ -16,7 +16,7 @@ class LoadRepository
   register :validate_repository_request, lambda { |params|
     repo_owner_request = RepositoryOwnerRequest.call(params)
     if repo_owner_request.success?
-      Right(repo_owner_request[:repository_owner])
+      Right(repo_owner_request)
     else
       message = ErrorFlattener.new(
         ValidationError.new(repo_owner_request)
@@ -27,7 +27,7 @@ class LoadRepository
 
   register :call_api_to_load_repository, lambda { |params|
     begin
-      http_result = HTTP.get("#{DevRankAPP.config.DEVRANK_API}/dev/#{params}")
+      http_result = HTTP.get("#{DevRankAPP.config.DEVRANK_API}/repos/#{params[:repository_owner]}/#{params[:repository_name]}")
       Right(http_result)
     rescue
       Left(Error.new("Our servers failed to get #{params} - we are investigating!"))
@@ -36,6 +36,8 @@ class LoadRepository
 
   register :return_api_result, lambda { |http_result|
     data = http_result.body.to_s
+    puts(http_result)
+    puts(http_result.status)
     if http_result.status == 200
       Right(RepositoryRepresenter.new(Repository.new).from_json(data))
     else
