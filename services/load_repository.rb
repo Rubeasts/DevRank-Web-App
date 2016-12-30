@@ -27,7 +27,7 @@ class LoadRepository
 
   register :call_api_to_load_repository, lambda { |params|
     begin
-      http_result = HTTP.get("#{DevRankAPP.config.DEVRANK_API}/repos/#{params[:repository_owner]}/#{params[:repository_name]}")
+      http_result = HTTP.get("#{DevRankAPP.api}/repos/#{params[:repository_owner]}/#{params[:repository_name]}")
       Right(http_result)
     rescue
       Left(Error.new("Our servers failed to get #{params} - we are investigating!"))

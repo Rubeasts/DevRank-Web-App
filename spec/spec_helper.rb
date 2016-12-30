@@ -14,7 +14,7 @@ require_relative 'pages/init.rb'
 HAPPY_USERNAME = 'rjollet'
 SAD_USERNAME = '132452'
 
-HOST = 'http://localhost:9000/'
+HOST = 'http://localhost:3030/'
 
 # Helper methods
 def homepage

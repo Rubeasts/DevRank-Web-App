@@ -27,7 +27,7 @@ class LoadDeveloper
 
   register :call_api_to_load_developer, lambda { |username|
     begin
-      http_result = HTTP.get("#{DevRankAPP.config.DEVRANK_API}/dev/#{username}")
+      http_result = HTTP.get("#{DevRankAPP.api}/dev/#{username}")
       Right(http_result)
     rescue
       Left(Error.new("Our servers failed to get #{username} - we are investigating!"))

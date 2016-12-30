@@ -18,6 +18,10 @@ class DevRankAPP < Sinatra::Base
   use Rack::Session::Cookie, secret: DevRankAPP.config.SECRET
   use Rack::Flash
 
+  def self.api
+    config.DEVRANK_API
+  end
+
   after do
     content_type 'text/html'
   end
