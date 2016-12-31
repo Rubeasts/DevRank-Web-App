@@ -1,18 +1,28 @@
 div id="RepositoryModal" class="modal fade" role="dialog"
-  .modal-dialog.modal-sm
-    .modal-content
-      .modal-header
-        button.close[type="button" data-dismiss="modal" aria-hidden="true"]
-          | ×
-        h4.modal-title
-          | Repository
-      .modal-body
-        .form-group
-          input#recipient-name.form-control[placeholder="Username"]
-        .form-group
-          input#recipient-name.form-control[placeholder="Repository"]
-      .modal-footer
-        button.btn.btn-default[type="button" data-dismiss="modal"]
-          | Cancel
-        button.btn.btn-primary[type="button"]
-          | Confirm
+  div class="modal-dialog"
+    div class="modal-content"
+      div class="modal-header"
+        h4 Find Repository
+      div class="modal-body"
+        form role="form" action="/repos" method='get' id='new-repository-form'
+          div class="form-developer"
+            label for='repository_owner' Owner:
+            input{
+              type='text' name='repository_owner'
+              id='repository_owner' class="form-control"
+              placeholder="e.g.: NicholasDanks"
+            }
+            label for='repository_name' Repository:
+            input{
+              type='text' name='repository_name'
+              id='repository_name' class="form-control"
+              placeholder="e.g.: Facegroup"
+            }
+          button{
+            type='submit' id='repository-form-submit' class='submit'
+            value='submit' class="btn btn-success"
+          } Find
+
+          button{
+            type="button" class="btn btn-default" data-dismiss="modal"
+          } Cancel

@@ -2,6 +2,8 @@
 require_relative 'spec_helper'
 
 describe 'Homepage' do
+  include PageObject::PageFactory
+
   before do
     unless @browser
       # @headless = Headless.new
@@ -16,27 +18,47 @@ describe 'Homepage' do
 
   describe 'Page elements' do
     it '(HAPPY) should see website features' do
-      # GIVEN
-      @browser.goto homepage
-      @browser.title.must_include 'DevRank'
-      @browser.h1.text.must_include 'DevRank'
+      visit HomePage do |page|
+        # GIVEN
+        @browser.goto homepage
+        page.title.must_include 'DevRank'
+        page.heading.must_include 'DevRank'
 
-      # THEN
-      @browser.a(name: 'dev').visible?.must_equal true
-      @browser.a(name: 'repo').visible?.must_equal true
+        # THEN
+        page.new_developer_element.visible?.must_equal true
+        page.new_repository_element.visible?.must_equal true
+      end
     end
 
     it '(HAPPY) should be able open the new group modal' do
-      # GIVEN: on the homepage
-      @browser.goto homepage
+      visit HomePage do |page|
+        # GIVEN: on the homepage
+        @browser.goto homepage
 
-      # WHEN: click on 'new group'
-      @browser.a(name: 'dev').click
+        # WHEN: click on 'new group'
+        page.new_developer
 
-      # THEN: should see elements in modal window
-      Watir::Wait.until { @browser.div(class: 'modal-dialog').visible? }
-      @browser.input(id: 'developer_username').visible?.must_equal true
-      @browser.button(id: 'username-form-submit').visible?.must_equal true
+        # THEN: should see elements in modal window
+        Watir::Wait.until { @browser.div(id: 'DeveloperModal').visible? }
+        page.input_username_element.visible?.must_equal true
+        page.username_submit_element.visible?.must_equal true
+      end
+    end
+
+    it '(HAPPY) should be able open the new group modal repo' do
+      visit HomePage do |page|
+        # GIVEN: on the homepage
+        @browser.goto homepage
+
+        # WHEN: click on 'new group'
+        page.new_repository
+
+        # THEN: should see elements in modal window
+        Watir::Wait.until { @browser.div(id: 'RepositoryModal').visible? }
+        page.input_owner_element.visible?.must_equal true
+        page.input_repository_element.visible?.must_equal true
+        page.repository_submit_element.visible?.must_equal true
+      end
     end
   end
 end

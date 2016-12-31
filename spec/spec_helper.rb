@@ -9,17 +9,14 @@ require 'headless'
 require 'page-object'
 
 require './init.rb'
+require_relative 'pages/init.rb'
 
 HAPPY_USERNAME = 'rjollet'
 SAD_USERNAME = '132452'
 
-HOST = 'http://localhost:9000/'
+HOST = 'http://localhost:3030/'
 
 # Helper methods
 def homepage
   HOST
-end
-
-def group_details_page(username)
-  "#{HOST}/dev/#{username}"
 end

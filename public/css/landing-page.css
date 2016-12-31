@@ -34,8 +34,8 @@ h6 {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: center;
-    color: #f8f8f8;
-    background: url(http://1zxig52eo2js464ld31v6ig86yy.wpengine.netdna-cdn.com/wp-content/uploads/2013/10/iStock_000011170434XXLarge.jpg) no-repeat center center;
+    color: #fff;
+    background: #666;
     background-size: cover;
 }
 
