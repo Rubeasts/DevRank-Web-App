@@ -1,3 +1,8 @@
+.jumbotron
+  .container
+    .title
+      h3
+        | DEVELOPER
 .content
   .container
     .row
@@ -27,18 +32,18 @@
                 .panel-heading
                   h3.panel-title.pull-left
                     | #{repo.full_name}
-                  
+
                 .panel-body
                   button.btn.btn-default.btn-xs.pull-right[type="button"]
                     span.glyphicon.glyphicon-eye-open[aria-hidden="true"]
                     | #{repo.watchers_count}
-                    |  
-                    
+                    |
+
                   button.btn.btn-default.btn-xs.pull-right[type="button"]
                     span.glyphicon.glyphicon-star[aria-hidden="true"]
                     | #{repo.stargazers_count}
-                    |  
-                    
+                    |
+
                   button.btn.btn-default.btn-xs.pull-right[type="button"]
                     span.glyphicon.glyphicon-duplicate[aria-hidden="true"]
                     | #{repo.forks_count}

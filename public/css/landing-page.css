@@ -22,7 +22,14 @@ h6 {
 }
 
 .topnav {
-    font-size: 14px;
+    //font-size: 14px;
+}
+.navbar {
+  margin-bottom: 0;
+}
+
+.title {
+  text-align: center;
 }
 
 .lead {

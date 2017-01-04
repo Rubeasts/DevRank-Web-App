@@ -2,7 +2,7 @@ div id="RepositoryModal" class="modal fade" role="dialog"
   div class="modal-dialog"
     div class="modal-content"
       div class="modal-header"
-        h4 Find Repository
+        h4 Find a Repository
       div class="modal-body"
         form role="form" action="/repos" method='get' id='new-repository-form'
           div class="form-developer"
@@ -18,11 +18,13 @@ div id="RepositoryModal" class="modal fade" role="dialog"
               id='repository_name' class="form-control"
               placeholder="e.g.: Facegroup"
             }
-          button{
-            type='submit' id='repository-form-submit' class='submit'
-            value='submit' class="btn btn-success"
-          } Find
+          div class="modal-footer"
 
-          button{
-            type="button" class="btn btn-default" data-dismiss="modal"
-          } Cancel
+            button{
+              type="button" class="btn btn-default" data-dismiss="modal"
+            } Cancel
+
+            button{
+              type='submit' id='repository-form-submit' class='submit'
+              value='submit' class="btn btn-primary"
+            } Find
