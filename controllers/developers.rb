@@ -38,6 +38,8 @@ class DevRankAPP < Sinatra::Base
   get '/dev/:developer_username/?' do
     result = LoadDeveloper.call(params)
     if result.success?
+      puts result.value
+      redirect "/?channel_id=#{result.value['channel_id']}"
       @data = result.value
       slim :developer
     else
