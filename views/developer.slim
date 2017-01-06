@@ -6,7 +6,7 @@
 .content
   .container
     .row
-      .col-md-3
+      .col-md-2
         h1
           img.img-responsive.img-rounded[class="avatar" src="#{@data['avatar_url']}" alt="Profile Picture"]
           h4 #{@data&.name}
@@ -23,27 +23,28 @@
             p Followers: #{@data&.followers}
             p Following: #{@data&.following}
             p Stars: #{@data&.stars}
-      .col-md-9
+      .col-md-7
         h1
         .col-md-12
           - @data&.repositories&.each do |repo|
-            .col-md-6
-              .panel.panel-default
-                .panel-heading
-                  h3.panel-title.pull-left
-                    | #{repo.full_name}
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title.pull-left
+                  | #{repo.full_name}
 
-                .panel-body
-                  button.btn.btn-default.btn-xs.pull-right[type="button"]
-                    span.glyphicon.glyphicon-eye-open[aria-hidden="true"]
-                    | #{repo.watchers_count}
-                    |
+              .panel-body
+                button.btn.btn-default.btn-xs.pull-right[type="button"]
+                  span.glyphicon.glyphicon-eye-open[aria-hidden="true"]
+                  | #{repo.watchers_count}
+                  |
 
-                  button.btn.btn-default.btn-xs.pull-right[type="button"]
-                    span.glyphicon.glyphicon-star[aria-hidden="true"]
-                    | #{repo.stargazers_count}
-                    |
+                button.btn.btn-default.btn-xs.pull-right[type="button"]
+                  span.glyphicon.glyphicon-star[aria-hidden="true"]
+                  | #{repo.stargazers_count}
+                  |
 
-                  button.btn.btn-default.btn-xs.pull-right[type="button"]
-                    span.glyphicon.glyphicon-duplicate[aria-hidden="true"]
-                    | #{repo.forks_count}
+                button.btn.btn-default.btn-xs.pull-right[type="button"]
+                  span.glyphicon.glyphicon-duplicate[aria-hidden="true"]
+                  | #{repo.forks_count}
+      .col-md-3
+        canvas id="myChart" width="600" height="400"
