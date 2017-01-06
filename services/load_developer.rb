@@ -40,7 +40,7 @@ class LoadDeveloper
     if http_result.status == 200
       Right(DeveloperRepresenter.new(Developer.new).from_json(data))
     elsif http_result.status == 202
-      Right http_result.parse
+      Right JSON.load(data)
     else      
       message = ErrorFlattener.new(
         ApiErrorRepresenter.new(ApiError.new).from_json(data)
