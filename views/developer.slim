@@ -27,12 +27,22 @@
         h1
         .col-md-12
           - @data&.repositories&.each do |repo|
+            javascript:
+              var flog = 1;
+              var flai = 2;
+              var rubo = 3;
             .panel.panel-default
               .panel-heading
                 h3.panel-title.pull-left
                   | #{repo.full_name}
 
               .panel-body
+                button.btn.btn-default.btn-xs.pull-right[type="button"]
+                  | flog : #{repo.flog_score}
+                button.btn.btn-default.btn-xs.pull-right[type="button"]
+                  | flay : #{repo.flay_score}
+                button.btn.btn-default.btn-xs.pull-right[type="button"]
+                  | rubocop : #{repo.rubocop_score}
                 button.btn.btn-default.btn-xs.pull-right[type="button"]
                   span.glyphicon.glyphicon-eye-open[aria-hidden="true"]
                   | #{repo.watchers_count}
@@ -47,8 +57,3 @@
                   span.glyphicon.glyphicon-duplicate[aria-hidden="true"]
                   | #{repo.forks_count}
       .col-md-3
-        javascript:
-          var flog = 1;
-          var flai = 2;
-          var rubo = 3;
-        canvas id="myChart" width="400" height="300"
