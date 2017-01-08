@@ -1,12 +1,15 @@
 ---
 development:
   DEVRANK_API: 'http://localhost:9292/api/v0.1'
+  DEVRANK_FAYE: 'http://localhost:9292/faye' 
   SECRET: 'some secret'
 
 test:
   DEVRANK_API: 'http://localhost:3000/api/v0.1'
+  DEVRANK_FAYE: 'http://localhost:3000/faye'
   SECRET: 'some secret'
 
 production:
   DEVRANK_API: 'https://my-server.com/api/v0.1'
+  DEVRANK_FAYE: 'http://my-server.com/faye'
   SECRET: 'some secret'

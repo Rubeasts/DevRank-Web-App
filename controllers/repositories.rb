@@ -20,8 +20,14 @@ class DevRankAPP < Sinatra::Base
   get '/repos/:repository_owner/:repository_name/?' do
     result = LoadRepository.call(params)
     if result.success?
-      @data = result.value
-      slim :repository
+      if result.value.class == Repository
+        @data = result.value
+        slim :repository
+      else
+        puts result.value['channel_id']
+        @channel = result.value['channel_id']
+        slim :loading
+      end        
     else
       flash[:error] = result.value.message
       redirect '/'
