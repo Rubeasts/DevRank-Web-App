@@ -1,0 +1,30 @@
+.content
+  .container
+    .row
+    - if @channel
+    .text-center
+      img src="http://i.giphy.com/IMfi5ugpf3W1y.gif"
+      p#progress
+
+      script src="#{DevRankAPP.config.DEVRANK_FAYE}.js"
+      javascript:
+        var text = document.getElementById('progress');
+        var url_array = document.URL.split('/')
+        var task_name = url_array[url_array.length]
+
+        var channel = "#{@channel}";
+        var client = new Faye.Client("#{DevRankAPP.config.DEVRANK_FAYE}");
+        client.subscribe('/' + channel, function(message) {
+          console.log(message);
+          text.innerHTML += "</br>" + message;
+
+          if (message === "Completed " + task_name) {
+            setTimeout( function () {
+              window.location = window.location.href.split('?')[0];
+            }, 2000)
+          };
+
+          setTimeout( function () {
+            window.location = window.location.href.split('?')[0];
+          }, 50000)
+        });

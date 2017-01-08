@@ -40,6 +40,8 @@ class LoadRepository
     puts(http_result.status)
     if http_result.status == 200
       Right(RepositoryRepresenter.new(Repository.new).from_json(data))
+    elsif http_result.status == 202
+      Right JSON.parse(JSON.parse(data)['data'])      
     else
       message = ErrorFlattener.new(
         ApiErrorRepresenter.new(ApiError.new).from_json(data)
