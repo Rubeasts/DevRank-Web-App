@@ -15,6 +15,8 @@ class DeveloperRepresenter < Roar::Decorator
   property :followers
   property :following
   property :stars
+  property :flog_avg
+  property :rubocop_avg
 
   collection :repositories, extend: RepositoryRepresenter, class: Repository
 end

@@ -1,4 +1,3 @@
-- count = 0
 .jumbotron
   .container
     .title
@@ -24,6 +23,8 @@
             p Followers: #{@data&.followers}
             p Following: #{@data&.following}
             p Stars: #{@data&.stars}
+            p Flog Score : #{@data&.flog_avg.to_i}
+            p Rubocop Score : #{@data&.rubocop_avg.to_i}
       .col-md-9
         h1
         .col-md-12
@@ -33,16 +34,18 @@
                 h3.panel-title.pull-left
                   | #{repo.full_name}
               .panel-body
-                canvas id="chart#{index}"
+                canvas id="chart#{index}" width="800" height="300"
                 javascript:
+                  var part_all_string = "#{eval(repo.stat.participation)["all"]}";
+                  part_all = JSON.parse("[" + part_all_string + "]");
                   var buyers = document.getElementById('chart' + #{index}).getContext('2d');
                   new Chart(buyers).Line(buyerData);
                 - if repo.flog_score != "void"
                   button.btn.btn-default.btn-xs.pull-right[type="button"]
                     | flog : #{repo.flog_score.total_score.to_i} (max: #{repo.flog_score.max_score.to_i})
+
                 - else
                   |
-
                 - if repo.flay_score != "void"
                   button.btn.btn-default.btn-xs.pull-right[type="button"]
                     | flay : #{repo.flay_score.to_i}

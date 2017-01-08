@@ -1,24 +1,19 @@
-function resize(){
-    $("#canvas").outerHeight($(window).height()-$("#canvas").offset().top- Math.abs($("#canvas").outerHeight(true) - $("#canvas").outerHeight()));
+  var labels = [];
+  for (var i = 1; i <= 52; i++) {
+      labels.push(i);
   }
-  $(document).ready(function(){
-    resize();
-    $(window).on("resize", function(){
-        resize();
-    });
-  });
 
-
+  var part_all = [];
 
   var buyerData = {
-  	labels : ["January","February","March","April","May","June"],
+  	labels : labels,
   	datasets : [
   		{
   			fillColor : "rgba(172,194,132,0.4)",
   			strokeColor : "#ACC26D",
   			pointColor : "#fff",
   			pointStrokeColor : "#9DB86D",
-  			data : [203,156,99,251,305,247]
+  			data : part_all
   		}
   	]
   }

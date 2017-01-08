@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require_relative "flog_score"
 require_relative "rubocop_score"
+require_relative "stat"
 
 # Roar:Decorator for representing the developer
 class RepositoryRepresenter < Roar::Decorator
@@ -21,4 +22,5 @@ class RepositoryRepresenter < Roar::Decorator
   property :flay_score, default: "void"
   property :rubocop_score, class: RubocopScore, extend: RubocopScoreRepresenter, default: "void"
   property :language
+  property :stat, class: Stat, extend: StatRepresenter, default: "void"
 end
