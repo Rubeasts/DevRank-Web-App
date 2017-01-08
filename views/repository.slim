@@ -6,16 +6,17 @@
 .content
   .container
     .row
-      .col-md-3
+      .col-md-4
         h1
           | #{@data&.full_name}
         h4
-          | Privacy: #{@data&.created_at}
+          | Created at : #{@data&.created_at}
         h4
           | Stars: #{@data&.stargazers_count}
         h4
-          | Stars: #{@data&.watchers_count}
+          | Watchers: #{@data&.watchers_count}
         h4
-          | Stars: #{@data&.forks_count}
+          | Fork: #{@data&.forks_count}
         h4
-          | Stars: #{@data&.open_issues_count}
+          | Open issues: #{@data&.open_issues_count}
+      .col-md-8

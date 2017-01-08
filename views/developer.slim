@@ -1,3 +1,4 @@
+- count = 0
 .jumbotron
   .container
     .title
@@ -6,7 +7,7 @@
 .content
   .container
     .row
-      .col-md-2
+      .col-md-3
         h1
           img.img-responsive.img-rounded[class="avatar" src="#{@data['avatar_url']}" alt="Profile Picture"]
           h4 #{@data&.name}
@@ -23,34 +24,35 @@
             p Followers: #{@data&.followers}
             p Following: #{@data&.following}
             p Stars: #{@data&.stars}
-      .col-md-7
+      .col-md-9
         h1
         .col-md-12
-          - @data&.repositories&.each do |repo|
-            javascript:
-              var flog = 1;
-              var flai = 2;
-              var rubo = 3;
+          - @data&.repositories&.each&.with_index do |repo, index|
             .panel.panel-default
               .panel-heading
                 h3.panel-title.pull-left
                   | #{repo.full_name}
               .panel-body
+                canvas id="chart#{index}"
+                javascript:
+                  var buyers = document.getElementById('chart' + #{index}).getContext('2d');
+                  new Chart(buyers).Line(buyerData);
                 - if repo.flog_score != "void"
                   button.btn.btn-default.btn-xs.pull-right[type="button"]
-                    | flog : #{repo.flog_score.total_score.to_i} (max: #{repo.flog_score.max_score.to_i} )
+                    | flog : #{repo.flog_score.total_score.to_i} (max: #{repo.flog_score.max_score.to_i})
                 - else
                   |
+
                 - if repo.flay_score != "void"
                   button.btn.btn-default.btn-xs.pull-right[type="button"]
                     | flay : #{repo.flay_score.to_i}
                 - else
                   |
+
                 - if repo.rubocop_score != "void"
                   - if repo.rubocop_score.inspected_file_count != 0
-                    -rubocop = repo.rubocop_score.offense_count / repo.rubocop_score.inspected_file_count
                     button.btn.btn-default.btn-xs.pull-right[type="button"]
-                      | rubocop : offense_count / inspected_file_count
+                      | rubocop : #{repo.rubocop_score.offense_count / repo.rubocop_score.inspected_file_count}
                   - else
                     |
                 - else
@@ -69,4 +71,3 @@
                 button.btn.btn-default.btn-xs.pull-right[type="button"]
                   span.glyphicon.glyphicon-duplicate[aria-hidden="true"]
                   | #{repo.forks_count}
-      .col-md-3
