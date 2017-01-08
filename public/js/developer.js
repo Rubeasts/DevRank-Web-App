@@ -3,19 +3,37 @@
       labels.push(i);
   }
 
-  function loadParticipation(a) {
+  function loadParticipation(a,b) {
 
     var buyerData = {
-    	labels : labels,
-    	datasets : [
-    		{
-    			fillColor : "rgba(172,194,132,0.4)",
-    			strokeColor : "#ACC26D",
-    			pointColor : "#fff",
-    			pointStrokeColor : "#9DB86D",
-    			data : a
-    		}
-    	]
+    	type: 'line',
+      options: {
+        scales: {
+          xAxes: [{
+            display: false
+          }],
+          yAxes: [{
+            display: false
+          }],
+        }
+      },
+      data: {
+        labels: labels,
+      	datasets : [
+      		{
+            label: 'all',
+      			fillColor : "transparent",
+      			backgroundColor: "rgba(153,255,51,0.4)",
+      			data : a
+      		},
+          {
+            label: 'owner',
+            fillColor: "transparent",
+            backgroundColor: "rgba(255,153,0,0.4)",
+            data: b
+          }
+      	]
+      }
     }
     return buyerData;
   }

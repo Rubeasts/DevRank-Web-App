@@ -34,13 +34,14 @@
                 h3.panel-title.pull-left
                   | #{repo.full_name}
               .panel-body
-                canvas id="chart#{index}" width="800" height="300"
+                canvas id="chart#{index}" class="charts" width="600" height="200"
                 javascript:
-                  var part_all = "#{eval(repo.stat.participation)["all"]}";
-                  var buyerData = loadParticipation(part_all);
+                  var part_all = #{eval(repo.stat.participation)["all"]};
+                  var part_owner = #{eval(repo.stat.participation)["owner"]};
+                  var buyerData = loadParticipation(part_all, part_owner);
                   var buyers = document.getElementById('chart' + #{index}).getContext('2d');
-                  console.log(buyerData.datasets[0].data);
-                  new Chart(buyers).Line(buyerData);
+                  console.log(buyerData.data.datasets[0].data);
+                  new Chart(buyers, buyerData);
                 - if repo.flog_score != "void"
                   button.btn.btn-default.btn-xs.pull-right[type="button"]
                     | flog : #{repo.flog_score.total_score.to_i} (max: #{repo.flog_score.max_score.to_i})
