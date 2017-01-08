@@ -36,9 +36,10 @@
               .panel-body
                 canvas id="chart#{index}" width="800" height="300"
                 javascript:
-                  var part_all_string = "#{eval(repo.stat.participation)["all"]}";
-                  part_all = JSON.parse("[" + part_all_string + "]");
+                  var part_all = "#{eval(repo.stat.participation)["all"]}";
+                  var buyerData = loadParticipation(part_all);
                   var buyers = document.getElementById('chart' + #{index}).getContext('2d');
+                  console.log(buyerData.datasets[0].data);
                   new Chart(buyers).Line(buyerData);
                 - if repo.flog_score != "void"
                   button.btn.btn-default.btn-xs.pull-right[type="button"]
