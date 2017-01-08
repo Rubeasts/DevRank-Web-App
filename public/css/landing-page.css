@@ -22,7 +22,19 @@ h6 {
 }
 
 .topnav {
-    font-size: 14px;
+    //font-size: 14px;
+}
+.navbar {
+  margin-bottom: 0;
+}
+
+.charts {
+    margin: auto;
+    width: 600px;
+}
+
+.title {
+  text-align: center;
 }
 
 .lead {
@@ -141,6 +153,10 @@ h6 {
 .banner-social-buttons {
     float: right;
     margin-top: 0;
+}
+
+#canvas{
+  width: 100%;
 }
 
 @media(max-width:1199px) {

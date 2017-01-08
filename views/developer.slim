@@ -1,3 +1,8 @@
+.jumbotron
+  .container
+    .title
+      h3
+        | DEVELOPER
 .content
   .container
     .row
@@ -18,27 +23,56 @@
             p Followers: #{@data&.followers}
             p Following: #{@data&.following}
             p Stars: #{@data&.stars}
+            p Flog Score : #{@data&.flog_avg.to_i}
+            p Rubocop Score : #{@data&.rubocop_avg.to_i}
       .col-md-9
         h1
         .col-md-12
-          - @data&.repositories&.each do |repo|
-            .col-md-6
-              .panel.panel-default
-                .panel-heading
-                  h3.panel-title.pull-left
-                    | #{repo.full_name}
-                  
-                .panel-body
+          - @data&.repositories&.each&.with_index do |repo, index|
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title.pull-left
+                  | #{repo.full_name}
+              .panel-body
+                canvas id="chart#{index}" class="charts" width="600" height="200"
+                javascript:
+                  var part_all = #{eval(repo.stat.participation)["all"]};
+                  var part_owner = #{eval(repo.stat.participation)["owner"]};
+                  var buyerData = loadParticipation(part_all, part_owner);
+                  var buyers = document.getElementById('chart' + #{index}).getContext('2d');
+                  console.log(buyerData.data.datasets[0].data);
+                  new Chart(buyers, buyerData);
+                - if repo.flog_score != "void"
                   button.btn.btn-default.btn-xs.pull-right[type="button"]
-                    span.glyphicon.glyphicon-eye-open[aria-hidden="true"]
-                    | #{repo.watchers_count}
-                    |  
-                    
+                    | flog : #{repo.flog_score.total_score.to_i} (max: #{repo.flog_score.max_score.to_i})
+
+                - else
+                  |
+                - if repo.flay_score != "void"
                   button.btn.btn-default.btn-xs.pull-right[type="button"]
-                    span.glyphicon.glyphicon-star[aria-hidden="true"]
-                    | #{repo.stargazers_count}
-                    |  
-                    
-                  button.btn.btn-default.btn-xs.pull-right[type="button"]
-                    span.glyphicon.glyphicon-duplicate[aria-hidden="true"]
-                    | #{repo.forks_count}
+                    | flay : #{repo.flay_score.to_i}
+                - else
+                  |
+
+                - if repo.rubocop_score != "void"
+                  - if repo.rubocop_score.inspected_file_count != 0
+                    button.btn.btn-default.btn-xs.pull-right[type="button"]
+                      | rubocop : #{repo.rubocop_score.offense_count / repo.rubocop_score.inspected_file_count}
+                  - else
+                    |
+                - else
+                  |
+
+                button.btn.btn-default.btn-xs.pull-right[type="button"]
+                  span.glyphicon.glyphicon-eye-open[aria-hidden="true"]
+                  | #{repo.watchers_count}
+                  |
+
+                button.btn.btn-default.btn-xs.pull-right[type="button"]
+                  span.glyphicon.glyphicon-star[aria-hidden="true"]
+                  | #{repo.stargazers_count}
+                  |
+
+                button.btn.btn-default.btn-xs.pull-right[type="button"]
+                  span.glyphicon.glyphicon-duplicate[aria-hidden="true"]
+                  | #{repo.forks_count}

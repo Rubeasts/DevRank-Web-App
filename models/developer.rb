@@ -2,4 +2,4 @@
 
 Developer = Struct.new :id, :github_id, :username, :avatar_url, :name,
                        :location, :email, :followers, :following, :stars,
-                       :repositories
+                       :repositories, :flog_avg, :rubocop_avg
