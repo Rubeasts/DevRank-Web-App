@@ -10,7 +10,6 @@ class LoadDeveloper
       step :validate_username_request
       step :call_api_to_load_developer
       step :return_api_result
-      step :return_api_result_summary
     end.call(url_request)
   end
 
@@ -36,11 +35,15 @@ class LoadDeveloper
   }
 
   register :return_api_result, lambda { |http_result|
-    data = http_result.body.to_s
+    data = JSON.parse(http_result.body.to_s)['data']
+    puts data['data']
     if http_result.status == 200
-      Right(DeveloperRepresenter.new(Developer.new).from_json(data))
+      developer = DeveloperRepresenter.new(Developer.new).from_json(data)
+      puts developer
+      developer = add_stats_avg developer
+      Right developer
     elsif http_result.status == 202
-      Right JSON.parse(JSON.parse(data)['data'])
+      Right JSON.parse(data)
     else
       message = ErrorFlattener.new(
         ApiErrorRepresenter.new(ApiError.new).from_json(data)
@@ -49,37 +52,32 @@ class LoadDeveloper
     end
   }
 
-  register :return_api_result_summary, lambda { |developer|
-    begin
-      count_flog = 0
-      count_rubo = 0
-      flog_sum = 0
-      rubo_offense = 0
-      rubo_file = 0
-      developer.repositories.each do |child|
-        if child.flog_score != "void"
-          count_flog = count_flog + 1
-          flog_sum = flog_sum + child.flog_score.total_score
-        else
-        end
-        if child.rubocop_score != "void"
-          count_rubo = count_rubo + 1
-          rubo_offense = rubo_offense + child.rubocop_score.offense_count
-          rubo_file = rubo_file + child.rubocop_score.inspected_file_count
-        else
-        end
+  def self.add_stats_avg(developer)
+    count_flog = 0
+    count_rubo = 0
+    flog_sum = 0
+    rubo_offense = 0
+    rubo_file = 0
+    developer.repositories.each do |child|
+      if child.flog_score != "void"
+        count_flog = count_flog + 1
+        flog_sum = flog_sum + child.flog_score.total_score
+      else
       end
-
-      flog_avg = flog_sum / count_flog
-      rubo_avg = rubo_offense / rubo_file
-      puts flog_avg
-      puts rubo_avg
-      developer.flog_avg = flog_avg
-      developer.rubocop_avg = rubo_avg
-      Right(developer)
-    rescue
-      Left(Error.new("Failed to get statistics of this user"))
+      if child.rubocop_score != "void"
+        count_rubo = count_rubo + 1
+        rubo_offense = rubo_offense + child.rubocop_score.offense_count
+        rubo_file = rubo_file + child.rubocop_score.inspected_file_count
+      else
+      end
     end
 
-  }
+    flog_avg = count_flog == 0 ? 0 : flog_sum / count_flog
+    rubo_avg = rubo_file == 0 ? 0 : rubo_offense / rubo_file
+    puts flog_avg
+    puts rubo_avg
+    developer.flog_avg = flog_avg
+    developer.rubocop_avg = rubo_avg
+    developer
+  end
 end
