@@ -30,9 +30,44 @@
         .col-md-12
           - @data&.repositories&.each&.with_index do |repo, index|
             .panel.panel-default
-              .panel-heading
+              .panel-heading.clearfix
                 h3.panel-title.pull-left
                   | #{repo.full_name}
+                div class="btn-group pull-right"
+                  - if repo.flog_score != "void"
+                    button.btn.btn-default.btn-sm
+                      | flog : #{repo.flog_score.total_score.to_i} (max: #{repo.flog_score.max_score.to_i})
+
+                  - else
+                    |
+                  - if repo.flay_score != "void"
+                    button.btn.btn-default.btn-sm
+                      | flay : #{repo.flay_score.to_i}
+                  - else
+                    |
+
+                  - if repo.rubocop_score != "void"
+                    - if repo.rubocop_score.inspected_file_count != 0
+                      button.btn.btn-default.btn-sm
+                        | rubocop : #{repo.rubocop_score.offense_count / repo.rubocop_score.inspected_file_count}
+                    - else
+                      |
+                  - else
+                    |
+
+                  button.btn.btn-default.btn-sm
+                    span.glyphicon.glyphicon-eye-open[aria-hidden="true"]
+                    | #{repo.watchers_count}
+                    |
+
+                  button.btn.btn-default.btn-sm
+                    span.glyphicon.glyphicon-star[aria-hidden="true"]
+                    | #{repo.stargazers_count}
+                    |
+
+                  button.btn.btn-default.btn-sm
+                    span.glyphicon.glyphicon-duplicate[aria-hidden="true"]
+                    | #{repo.forks_count}
               .panel-body
                 canvas id="chart#{index}" class="charts" width="600" height="200"
                 javascript:
@@ -42,37 +77,3 @@
                   var buyers = document.getElementById('chart' + #{index}).getContext('2d');
                   console.log(buyerData.data.datasets[0].data);
                   new Chart(buyers, buyerData);
-                - if repo.flog_score != "void"
-                  button.btn.btn-default.btn-xs.pull-right[type="button"]
-                    | flog : #{repo.flog_score.total_score.to_i} (max: #{repo.flog_score.max_score.to_i})
-
-                - else
-                  |
-                - if repo.flay_score != "void"
-                  button.btn.btn-default.btn-xs.pull-right[type="button"]
-                    | flay : #{repo.flay_score.to_i}
-                - else
-                  |
-
-                - if repo.rubocop_score != "void"
-                  - if repo.rubocop_score.inspected_file_count != 0
-                    button.btn.btn-default.btn-xs.pull-right[type="button"]
-                      | rubocop : #{repo.rubocop_score.offense_count / repo.rubocop_score.inspected_file_count}
-                  - else
-                    |
-                - else
-                  |
-
-                button.btn.btn-default.btn-xs.pull-right[type="button"]
-                  span.glyphicon.glyphicon-eye-open[aria-hidden="true"]
-                  | #{repo.watchers_count}
-                  |
-
-                button.btn.btn-default.btn-xs.pull-right[type="button"]
-                  span.glyphicon.glyphicon-star[aria-hidden="true"]
-                  | #{repo.stargazers_count}
-                  |
-
-                button.btn.btn-default.btn-xs.pull-right[type="button"]
-                  span.glyphicon.glyphicon-duplicate[aria-hidden="true"]
-                  | #{repo.forks_count}
